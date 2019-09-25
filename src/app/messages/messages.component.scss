@@ -1,0 +1,16 @@
+.messages {
+  &__message {
+    margin: 20px 0;
+  }
+
+  &__no-messages-text {
+    display: flex;
+    justify-content: center;
+    color: gray;
+  }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,38 @@
+:host {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.app {
+  &__filler {
+    flex: 1 1 auto;
+  }
+
+  &__header {
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+      0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+    position: fixed;
+    z-index: 1000;
+  }
+
+  &__main {
+    height: 80%;
+    margin-top: 80px;
+  }
+
+  &__link {
+    outline: 0;
+    margin-right: 5px;
+    color: white;
+    text-decoration: none;
+  }
+
+  &__scroll-top {
+    position: fixed;
+    bottom: 6px;
+    right: 8px;
+  }
+}

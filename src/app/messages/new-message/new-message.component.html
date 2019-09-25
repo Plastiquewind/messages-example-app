@@ -1,0 +1,53 @@
+<form [formGroup]="newMessageForm" (ngSubmit)="onSubmit()">
+  <div class="new-message" fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="New message..."
+        type="text"
+        formControlName="text"
+        [readonly]="isPosting"
+      />
+      <mat-hint>{{ f.text.value.length }}/{{ messageMaxLength }}</mat-hint>
+      <mat-error *ngIf="f.text.hasError('required')">
+        You can't send empty message
+      </mat-error>
+      <mat-error *ngIf="f.text.hasError('maxlength')">
+        Message is too long
+      </mat-error>
+    </mat-form-field>
+    <ng-container *ngIf="!isPosting; else posting">
+      <button
+        fxShow
+        fxHide.lt-md
+        mat-raised-button
+        color="primary"
+        [disabled]="!f.text.value || newMessageForm.invalid"
+        class="new-message__button"
+      >
+        <mat-icon>
+          send
+        </mat-icon>
+        Post
+      </button>
+      <button
+        fxHide
+        fxShow.lt-md
+        mat-icon-button
+        color="primary"
+        [disabled]="!f.text.value || newMessageForm.invalid"
+        class="new-message__button"
+      >
+        <mat-icon>
+          send
+        </mat-icon>
+      </button>
+    </ng-container>
+    <ng-template #posting>
+      <mat-progress-spinner
+        [diameter]="24"
+        [mode]="'indeterminate'"
+      ></mat-progress-spinner>
+    </ng-template>
+  </div>
+</form>

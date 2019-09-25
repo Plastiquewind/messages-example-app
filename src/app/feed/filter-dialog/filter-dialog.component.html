@@ -1,0 +1,76 @@
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Contains</mat-label>
+    <input matInput placeholder="Text" type="text" formControlName="text" />
+    <mat-hint>{{ f.text.value.length }}/{{ messageMaxLength }}</mat-hint>
+    <mat-error *ngIf="f.text.hasError('maxlength')">
+      Text is too long
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      placeholder="Author"
+      matInput
+      formControlName="author"
+      [matAutocomplete]="authorAutocomplete"
+    />
+    <mat-autocomplete
+      #authorAutocomplete="matAutocomplete"
+      [displayWith]="displayAuthorFn"
+    >
+      <mat-option *ngFor="let author of authors$ | async" [value]="author">
+        {{ author.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>From</mat-label>
+    <input
+      matInput
+      formControlName="from"
+      [matDatepicker]="dateFrom"
+      [max]="maxDate"
+      readonly
+      (dateChange)="onMinDateChange($event)"
+      (click)="dateFrom.open()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+    <mat-datepicker #dateFrom></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>To</mat-label>
+    <input
+      matInput
+      formControlName="to"
+      [matDatepicker]="dateTo"
+      [min]="minDate"
+      [max]="maxDate"
+      readonly
+      (click)="dateTo.open()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+    <mat-datepicker #dateTo></mat-datepicker>
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div>
+      <button
+        *ngIf="isResetVisible"
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="onReset()"
+      >
+        Reset
+      </button>
+    </div>
+    <div>
+      <button type="button" mat-raised-button (click)="onCancel()">
+        Cancel
+      </button>
+      <button type="submit" mat-raised-button color="primary">
+        Apply
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,63 @@
+<div class="signup" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="signup__box">
+    <mat-card-header class="signup__header">
+      <mat-card-title class="signup__title">Sign up</mat-card-title>
+    </mat-card-header>
+
+    <form class="signup__form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <mat-form-field class="signup__field">
+          <input
+            matInput
+            placeholder="Username"
+            type="text"
+            formControlName="username"
+          />
+        </mat-form-field>
+        <mat-form-field class="signup__field">
+          <input
+            matInput
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+        <mat-form-field class="signup__field">
+          <input
+            matInput
+            placeholder="Confirm password"
+            type="password"
+            formControlName="passwordConfirmation"
+          />
+          <mat-error
+            *ngIf="submitted && f.passwordConfirmation.hasError('mustMatch')"
+          >
+            The password and confirmation password do not match.
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <button
+        *ngIf="!(authState$ | async)?.isSigningUp; else spinner"
+        mat-stroked-button
+        color="accent"
+        class="signup__button"
+      >
+        Register
+      </button>
+      <p fxLayout="row" fxLayoutAlign="center">
+        <span
+          >Already have an account?
+          <a routerLink="/login" (click)="onLoginClick()">Log in</a></span
+        >
+      </p>
+    </form>
+  </mat-card>
+</div>
+<ng-template #spinner>
+  <div class="signup__spinner">
+    <mat-progress-spinner
+      [diameter]="55"
+      [mode]="'indeterminate'"
+    ></mat-progress-spinner>
+  </div>
+</ng-template>

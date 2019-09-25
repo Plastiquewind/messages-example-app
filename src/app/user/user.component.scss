@@ -1,0 +1,12 @@
+.user {
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__messages-title {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}

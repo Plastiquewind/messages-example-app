@@ -1,0 +1,42 @@
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [immediateCheck]="true"
+  (scrolled)="onBottomReach()"
+  *ngIf="allMessages?.length; else noMessages"
+>
+  <mat-card
+    *ngFor="let message of allMessages; trackBy: trackByFn"
+    class="messages__message"
+  >
+    <mat-card-header>
+      <mat-card-title>
+        <a
+          *ngIf="!disableUserLinks; else nameOnly"
+          routerLink="/user/{{ message.author.name }}"
+          >{{ message.author.name }}
+        </a>
+        <ng-template #nameOnly>
+          {{ message.author.name }}
+        </ng-template>
+      </mat-card-title>
+      <mat-card-subtitle>{{
+        message.created | date: 'dd.MM.yyyy HH:mm'
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ message.text }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #noMessages>
+  <div *ngIf="!isLoading">
+    <span class="messages__no-messages-text mat-h2">No messages yet ;(</span>
+  </div>
+</ng-template>
+<div *ngIf="isLoading" class="messages__spinner">
+  <mat-progress-spinner
+    [diameter]="55"
+    [mode]="'indeterminate'"
+  ></mat-progress-spinner>
+</div>

@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="app__header">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center">
+    <a class="app__link" routerLink="/">
+      Messages
+    </a>
+    <span class="app__filler"></span>
+    <ng-container *ngIf="authenticatedUser$ | async as authenticatedUser">
+      <a
+        class="mat-body app__link"
+        routerLink="/user/{{ authenticatedUser.username }}"
+        >{{ authenticatedUser.username }}</a
+      >
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>
+          exit_to_app
+        </mat-icon>
+      </button>
+    </ng-container>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="app__main">
+  <router-outlet></router-outlet>
+  <button
+    class="app__scroll-top"
+    mat-mini-fab
+    color="primary"
+    [@showHide]="scrollTopIsVisible ? 'shown' : 'hidden'"
+    (click)="scrollToTop()"
+  >
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
+</div>

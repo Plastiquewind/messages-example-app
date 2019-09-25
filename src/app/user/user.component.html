@@ -1,0 +1,48 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex="20%" fxLayout="row" fxLayoutAlign="end start">
+    <button mat-icon-button color="primary" (click)="goBack()">
+      <mat-icon>
+        keyboard_arrow_left
+      </mat-icon>
+    </button>
+  </div>
+  <div fxFlex="60%">
+    <ng-container *ngIf="userState$ | async as userState">
+      <ng-container *ngIf="!userState.profileLoading; else loading">
+        <mat-card *ngIf="userState.profile">
+          <mat-card-header>
+            <mat-card-title>
+              {{ userState.profile?.name }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              Registration date:
+              {{ userState.profile?.registrationDate | date: 'dd.MM.yyyy' }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ userState.profile?.bio }}</p>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+      <ng-template #loading>
+        <div class="user__spinner">
+          <mat-progress-spinner
+            [diameter]="55"
+            [mode]="'indeterminate'"
+          ></mat-progress-spinner>
+        </div>
+      </ng-template>
+      <h2 *ngIf="userState.profile" class="user__messages-title mat-h2">
+        Messages by {{ userState.profile?.name }}
+      </h2>
+      <app-messages
+        [messages]="userState.messages"
+        [disableUserLinks]="true"
+        [isLoading]="userState.profileLoading || userState.messagesLoading"
+        [reset]="userState.messagesFilter.offset === 0"
+        (bottomReach)="onMessagesBottomReach($event)"
+      ></app-messages>
+    </ng-container>
+  </div>
+  <div fxFlex="20%"></div>
+</div>

@@ -1,0 +1,38 @@
+<div class="feed" *ngIf="feedState$ | async as feedState">
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <app-new-message
+      [isPosting]="feedState.isPosting"
+      class="feed__new-message"
+      (send)="onMessageSend($event)"
+    ></app-new-message>
+    <button
+      fxShow
+      fxHide.lt-md
+      class="feed__filter"
+      mat-raised-button
+      (click)="onFilterClick()"
+    >
+      <mat-icon>
+        filter_list
+      </mat-icon>
+      Filter
+    </button>
+    <button
+      fxHide
+      fxShow.lt-md
+      class="feed__filter"
+      mat-icon-button
+      (click)="onFilterClick()"
+    >
+      <mat-icon>
+        filter_list
+      </mat-icon>
+    </button>
+  </div>
+  <app-messages
+    [messages]="feedState.messages"
+    [isLoading]="feedState.isLoading"
+    [reset]="feedState.filter.offset === 0"
+    (bottomReach)="onMessagesBottomReach($event)"
+  ></app-messages>
+</div>
