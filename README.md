@@ -31,5 +31,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## TODO
 
-Implement fake signing up
-Add unit tests
+- Implement fake signing up
+- Add unit tests
