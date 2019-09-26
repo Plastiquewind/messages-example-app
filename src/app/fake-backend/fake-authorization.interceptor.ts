@@ -12,8 +12,6 @@ import { UserToken } from '../auth/user-token';
 import { Credentials } from '../auth/credentials';
 import { FakeUserTokens } from './fake-user-tokens';
 import { delay, mergeMap } from 'rxjs/operators';
-import { users, userProfiles } from './fake-data';
-import moment from 'moment-es6';
 
 @Injectable()
 export class FakeAuthorizationInterceptor implements HttpInterceptor {

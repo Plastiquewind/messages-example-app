@@ -4,7 +4,7 @@ import { UserToken } from './user-token';
 import { Credentials } from './credentials';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import moment from 'moment-es6';
+import moment from 'moment';
 
 @Injectable({
   providedIn: 'root'

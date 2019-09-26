@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import moment from 'moment-es6';
+import moment from 'moment';
 import { AppState, selectAuthState } from '../app.state';
 import { Store } from '@ngrx/store';
 import { UserToken } from './user-token';
