@@ -12,7 +12,7 @@ import {
 } from '@angular/forms';
 import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
 import { MessagesFilter } from '../../../app/messages/messages-filter';
-import moment from 'moment';
+import * as moment from 'moment';
 import { User } from '../../../app/shared/models/user';
 import {
   AppState,
