@@ -32,6 +32,10 @@ export const selectFilterDialogSelectedAuthor = createSelector(
   selectFilterDialogState,
   s => s.selectedAuthor
 );
+export const selectFeedFilterMinDate = createSelector(
+  selectFeedState,
+  s => s.filter.from
+);
 export const selectUserMessagesFilter = createSelector(
   selectUserState,
   s => s.messagesFilter

@@ -12,18 +12,26 @@ import {
 } from '@angular/forms';
 import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
 import { MessagesFilter } from '../../../app/messages/messages-filter';
-import * as moment from 'moment';
 import { User } from '../../../app/shared/models/user';
 import {
   AppState,
   selectFilterDialogAuthors,
-  selectFilterDialogSelectedAuthor
+  selectFilterDialogSelectedAuthor,
+  selectFeedFilterMinDate
 } from '../../../app/app.state';
 import { Store } from '@ngrx/store';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Observable } from 'rxjs';
-import { take, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import {
+  take,
+  debounceTime,
+  distinctUntilChanged,
+  filter
+} from 'rxjs/operators';
 import { FindAuthors, SelectAuthor, Reset } from './filter-dialog.actions';
+import * as m from 'moment';
+
+const moment = m;
 
 @Component({
   selector: 'app-filter-dialog',
@@ -58,6 +66,13 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
         this.filterForm = this.getFormGroup(selectedAuthor);
         this.isResetVisible = this.getResetButtonVisibility();
       });
+    this.store
+      .select(selectFeedFilterMinDate)
+      .pipe(
+        filter(minDate => !!minDate),
+        take(1)
+      )
+      .subscribe(minDate => (this.minDate = minDate));
 
     this.authors$ = this.store
       .select(selectFilterDialogAuthors)
@@ -84,8 +99,8 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
 
   public onSubmit(): void {
     if (!this.filterForm.invalid) {
-      const from: moment.Moment = this.f.from.value || null;
-      const to: moment.Moment = this.f.to.value || null;
+      const from: m.Moment = this.f.from.value || null;
+      const to: m.Moment = this.f.to.value || null;
       const author: User = this.f.author.value;
 
       this.store.dispatch(new SelectAuthor(author));
@@ -112,7 +127,7 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
     } as MessagesFilter);
   }
 
-  public onMinDateChange(e: MatDatepickerInputEvent<moment.Moment>) {
+  public onMinDateChange(e: MatDatepickerInputEvent<m.Moment>) {
     this.minDate = e.value.toDate();
   }
 

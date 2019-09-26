@@ -9,8 +9,10 @@ import { Observable } from 'rxjs';
 import { UserProfile } from '../shared/models/user-profile';
 import { User } from '../shared/models/user';
 import { FakeUserTokens } from './fake-user-tokens';
-import * as moment from 'moment';
+import * as m from 'moment';
 import { messages, users, userProfiles } from './fake-data';
+
+const moment = m;
 
 @Injectable({
   providedIn: 'root'
