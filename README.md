@@ -4,14 +4,6 @@ This is an example of a project built on Angular.
 
 The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
-## Live Demo
-
-Go to https://stackblitz.com/github/Plastiquewind/messages-example-app
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
 ## Fake credentials
 Currently the app doesn't simulate registering new users, so it's possible to use only existing ones, which are:
 
@@ -20,6 +12,14 @@ Currently the app doesn't simulate registering new users, so it's possible to us
 - Joey
 
 All these users have as simple as hell password: 12345
+
+## Live Demo
+
+Go to https://stackblitz.com/github/Plastiquewind/messages-example-app
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
