@@ -29,9 +29,7 @@ import {
   filter
 } from 'rxjs/operators';
 import { FindAuthors, SelectAuthor, Reset } from './filter-dialog.actions';
-import * as m from 'moment';
-
-const moment = m;
+import moment from 'moment';
 
 @Component({
   selector: 'app-filter-dialog',
@@ -59,20 +57,8 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.store
-      .select(selectFilterDialogSelectedAuthor)
-      .pipe(take(1))
-      .subscribe(selectedAuthor => {
-        this.filterForm = this.getFormGroup(selectedAuthor);
-        this.isResetVisible = this.getResetButtonVisibility();
-      });
-    this.store
-      .select(selectFeedFilterMinDate)
-      .pipe(
-        filter(minDate => !!minDate),
-        take(1)
-      )
-      .subscribe(minDate => (this.minDate = minDate));
+    this.initMinDate();
+    this.initForm();
 
     this.authors$ = this.store
       .select(selectFilterDialogAuthors)
@@ -99,8 +85,8 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
 
   public onSubmit(): void {
     if (!this.filterForm.invalid) {
-      const from: m.Moment = this.f.from.value || null;
-      const to: m.Moment = this.f.to.value || null;
+      const from: moment.Moment = this.f.from.value || null;
+      const to: moment.Moment = this.f.to.value || null;
       const author: User = this.f.author.value;
 
       this.store.dispatch(new SelectAuthor(author));
@@ -127,7 +113,7 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
     } as MessagesFilter);
   }
 
-  public onMinDateChange(e: MatDatepickerInputEvent<m.Moment>) {
+  public onMinDateChange(e: MatDatepickerInputEvent<moment.Moment>) {
     this.minDate = e.value.toDate();
   }
 
@@ -150,5 +136,25 @@ export class FilterDialogComponent implements OnInit, OnDestroy {
       !!this.messagesFilter.text ||
       !!this.messagesFilter.to
     );
+  }
+
+  private initMinDate(): void {
+    this.store
+      .select(selectFeedFilterMinDate)
+      .pipe(
+        filter(minDate => !!minDate),
+        take(1)
+      )
+      .subscribe(minDate => (this.minDate = minDate));
+  }
+
+  private initForm(): void {
+    this.store
+      .select(selectFilterDialogSelectedAuthor)
+      .pipe(take(1))
+      .subscribe(selectedAuthor => {
+        this.filterForm = this.getFormGroup(selectedAuthor);
+        this.isResetVisible = this.getResetButtonVisibility();
+      });
   }
 }

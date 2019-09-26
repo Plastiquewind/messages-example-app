@@ -13,10 +13,6 @@ Currently the app doesn't simulate registering new users, so it's possible to us
 
 All these users have as simple as hell password: 12345
 
-## Live Demo
-
-Go to https://stackblitz.com/github/Plastiquewind/messages-example-app
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

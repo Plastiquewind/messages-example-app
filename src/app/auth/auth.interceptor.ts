@@ -6,14 +6,12 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import * as m from 'moment';
 import { AppState, selectAuthState } from '../app.state';
 import { Store } from '@ngrx/store';
 import { UserToken } from './user-token';
 import { take } from 'rxjs/operators';
 import { Logout } from './auth.actions';
-
-const moment = m;
+import moment from 'moment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
