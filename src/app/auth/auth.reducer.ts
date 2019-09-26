@@ -1,4 +1,4 @@
-import { UserToken } from 'src/app/auth/user-token';
+import { UserToken } from '../../app/auth/user-token';
 import { AuthActionTypes, AllAuthActions } from './auth.actions';
 import { localStorageTokenKey } from './local-storage-token-key';
 

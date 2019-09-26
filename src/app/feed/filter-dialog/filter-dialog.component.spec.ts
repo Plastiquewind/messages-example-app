@@ -2,11 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterDialogComponent } from './filter-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'src/app/material/material.module';
+import { MaterialModule } from '../../../app/material/material.module';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from 'src/app/app.state';
-import { MESSAGE_MAX_LENGTH } from 'src/app/message-max-length-injection-token';
+import { reducers } from '../../../app/app.state';
+import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FilterDialogComponent', () => {

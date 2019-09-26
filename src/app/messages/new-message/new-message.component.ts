@@ -12,7 +12,7 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { MESSAGE_MAX_LENGTH } from 'src/app/message-max-length-injection-token';
+import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
 
 @Component({
   selector: 'app-new-message',

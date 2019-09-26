@@ -11,15 +11,15 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { MESSAGE_MAX_LENGTH } from 'src/app/message-max-length-injection-token';
-import { MessagesFilter } from 'src/app/messages/messages-filter';
+import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
+import { MessagesFilter } from '../../../app/messages/messages-filter';
 import moment from 'moment-es6';
-import { User } from 'src/app/shared/models/user';
+import { User } from '../../../app/shared/models/user';
 import {
   AppState,
   selectFilterDialogAuthors,
   selectFilterDialogSelectedAuthor
-} from 'src/app/app.state';
+} from '../../../app/app.state';
 import { Store } from '@ngrx/store';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Observable } from 'rxjs';

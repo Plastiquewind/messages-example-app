@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User } from 'src/app/shared/models/user';
+import { User } from '../../../app/shared/models/user';
 
 export enum FilterDialogActionTypes {
   FindAuthors = '[FilterDialog] Find Authors',

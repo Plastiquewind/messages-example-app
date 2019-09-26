@@ -1,4 +1,4 @@
-import { User } from 'src/app/shared/models/user';
+import { User } from '../../../app/shared/models/user';
 import {
   FilterDialogActionTypes,
   AllFilterDialogActions

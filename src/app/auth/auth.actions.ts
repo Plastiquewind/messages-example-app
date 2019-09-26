@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Credentials } from './credentials';
-import { UserToken } from 'src/app/auth/user-token';
+import { UserToken } from '../app/auth/user-token';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export enum AuthActionTypes {

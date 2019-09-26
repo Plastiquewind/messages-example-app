@@ -13,7 +13,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppState, selectAuthState } from 'src/app/app.state';
+import { AppState, selectAuthState } from '../../../app/app.state';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import { untilDestroyed } from 'ngx-take-until-destroy';
