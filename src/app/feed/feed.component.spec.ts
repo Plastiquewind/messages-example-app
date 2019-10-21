@@ -6,7 +6,7 @@ import { MaterialModule } from '../material/material.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../app.state';
 import { ToastrModule } from 'ngx-toastr';
-import { MESSAGE_MAX_LENGTH } from '../message-max-length-injection-token';
+import { MESSAGE_MAX_LENGTH } from '../core/message-max-length-injection-token';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FeedComponent', () => {

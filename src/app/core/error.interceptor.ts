@@ -8,8 +8,8 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { AppState } from './app.state';
-import { Logout } from './auth/auth.actions';
+import { AppState } from '../app.state';
+import { Logout } from '../auth/auth.actions';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

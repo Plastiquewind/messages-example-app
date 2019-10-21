@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { Action, Store } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { UserService } from './user.service';
 import {
   GetUser,
@@ -12,9 +12,8 @@ import {
   GetMessagesSuccess,
   GetMessagesFailure
 } from './user.actions';
-import { switchMap, map, catchError, exhaustMap, take } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import { MessagesService } from '../messages/messages.service';
-import { selectUserState, AppState } from '../app.state';
 
 @Injectable()
 export class UserEffects {
@@ -43,7 +42,6 @@ export class UserEffects {
   public constructor(
     private actions$: Actions,
     private userService: UserService,
-    private messagesService: MessagesService,
-    private store: Store<AppState>
+    private messagesService: MessagesService
   ) {}
 }

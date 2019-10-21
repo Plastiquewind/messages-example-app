@@ -47,7 +47,7 @@ export class AuthEffects {
     ofType<Logout>(AuthActionTypes.Logout),
     tap(() => {
       localStorage.removeItem(localStorageTokenKey);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth/login']);
     })
   );
 
@@ -65,7 +65,7 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   public readonly signUpSuccess$: Observable<Action> = this.actions$.pipe(
     ofType<SignUpSuccess>(AuthActionTypes.SignUpSuccess),
-    tap(() => this.router.navigateByUrl('/login'))
+    tap(() => this.router.navigateByUrl('auth/login'))
   );
 
   public constructor(

@@ -43,7 +43,6 @@ export class FeedComponent implements OnInit, OnDestroy {
       .select(selectFeedError)
       .pipe(
         filter(err => !!err),
-        take(1),
         untilDestroyed(this)
       )
       .subscribe(err => this.toastrService.error(err));
@@ -64,8 +63,8 @@ export class FeedComponent implements OnInit, OnDestroy {
       })
       .afterClosed()
       .subscribe(
-        (filter: MessagesFilter) =>
-          filter && this.store.dispatch(new GetMessages(filter))
+        (messagesFilter: MessagesFilter) =>
+          messagesFilter && this.store.dispatch(new GetMessages(messagesFilter))
       );
   }
 

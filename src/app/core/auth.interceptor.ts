@@ -8,9 +8,9 @@ import {
 import { Observable } from 'rxjs';
 import { AppState, selectAuthState } from '../app.state';
 import { Store } from '@ngrx/store';
-import { UserToken } from './user-token';
+import { UserToken } from '../auth/user-token';
 import { take } from 'rxjs/operators';
-import { Logout } from './auth.actions';
+import { Logout } from '../auth/auth.actions';
 import moment from 'moment';
 
 @Injectable()

@@ -12,7 +12,7 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
+import { MESSAGE_MAX_LENGTH } from '../../core/message-max-length-injection-token';
 
 @Component({
   selector: 'app-new-message',
@@ -44,6 +44,7 @@ export class NewMessageComponent implements OnInit {
   public onSubmit(): void {
     if (!this.newMessageForm.invalid) {
       this.send.emit(this.f.text.value);
+      this.f.text.setValue('');
     }
   }
 }

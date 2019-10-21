@@ -10,7 +10,7 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { MESSAGE_MAX_LENGTH } from '../../../app/message-max-length-injection-token';
+import { MESSAGE_MAX_LENGTH } from '../../core/message-max-length-injection-token';
 import { MessagesFilter } from '../../../app/messages/messages-filter';
 import { User } from '../../../app/shared/models/user';
 import {
